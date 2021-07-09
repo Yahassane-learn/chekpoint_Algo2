@@ -1,0 +1,23 @@
+ALGORITHM Sum_elements_overllapins
+VAR
+    tab1: ARRAY_OF INTEGER[5]; // creat the first array
+    tab2: ARRAY_OF INTEGER[7];  // the second array
+    i,j : INTEGER ;  // the iterators
+    sum : INTEGER := 0 ;  // the variable to container the sum
+    find: INTEGER := 0 ;   // this variable searche if yes or no the element is in the array
+BEGIN
+    tab1:={1,3,4,10,5,20} ;  // the values of tab
+    tab1:={12,3,8,5,0,16,35,20} ;
+    FOR i FROM 0 TO 5 STEP 1  DO   // we iterator the diff elements of tab1 
+        FOR j FROM 0 TO 7 STEP 1  DO    // we iterator the diff elements of tab1 
+        // we searche the element iterator of tab1 in the tab2 if it'here we break else we sum in the variable sum
+            IF(tab1[i] = tab2[j]) THEN   // we searche if the element iterator  of tab1  is equivalent wich one element of tab2
+                find := 1 ;             
+                BREAK ;
+            END_IF   
+        END_FOR    // we out because we woud compare the list elements of tab2 wich the element iterator of tab1
+        IF(find = 1)THEN               // now if find = 0 , we have a distinct element (not equivalent element wich the iterator of tab1)
+            sum :=tab1[i]*2;
+        END_IF
+    END_FOR
+END

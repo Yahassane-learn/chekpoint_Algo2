@@ -1,0 +1,41 @@
+ALGORITHM sum_elements_distincts2
+VAR
+    htab1 HASH_TABLE<INTEGER,INTEGER>;
+    htab2 HASH_TABLE<INTEGER,INTEGER>;
+    sum  :INTEGER := 0 ;
+    elmt1 ,i,j : INTEGER;
+BEGIN
+    //insert elements wich here keys and values  
+    htab1 HASH_TABLE<INTEGER,INTEGER>;
+    htab1.insert(0,1) ;
+    htab1.insert(1,3) ;
+    htab1.insert(2,4) ;
+    htab1.insert(3,10) ;
+    htab1.insert(4,5) ;
+    htab1.insert(5,20) ;
+    htab2 HASH_TABLE<INTEGER,INTEGER>;
+    htab1.insert(0,12) ;
+    htab1.insert(1,3) ;
+    htab1.insert(2,8) ;
+    htab1.insert(3,5) ;
+    htab1.insert(4,0) ;
+    htab1.insert(5,16) ;
+    htab1.insert(3,35) ;
+    htab1.insert(5,20) ;
+    
+    FOR i FROM 0 TO 5 STEP 1  DO
+        elmt1 := htab1.get(i) ;  // we get an element of the hash table 1 and we search that in the hash table 2  
+        IF( htab2.search(elmt1) = FALSE ) THEN  // if not here we add this in the sum 
+            sum := sum+elmt1 ;
+        END_IF
+    END_FOR
+    // we do this inversersement 
+    FOR j FROM 0 TO 7 STEP 1  DO
+        elmt2 := htab2.get(j) ;  
+        IF( htab1.search(elmt2) = FALSE ) THEN 
+            sum := sum+elmt2 ;
+        END_IF
+    END_FOR
+
+    
+END
